@@ -10,6 +10,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         data class User(val id: Int, val name: String, val active: Boolean)
+
         val users = listOf(
             User(0, "Zarai", true),
             User(1, "Bruce", false),
@@ -34,9 +35,8 @@ class MainActivity : AppCompatActivity() {
             User(20, "Todd", true)
         )
 
-        var activeUserNames = mutableListOf<String>()
 
-        fun storeActiveUserNames() {
+        fun storeActiveUserNames(): List<String> {
             var activeUsers = mutableListOf<User>()
 
             for (user in users) {
@@ -47,14 +47,15 @@ class MainActivity : AppCompatActivity() {
 
             activeUsers.sortBy { user -> user.name }
 
-            activeUserNames.clear()
+            val activeUserNames = mutableListOf<String>()
 
             for (user in activeUsers) {
                 activeUserNames.add(user.name)
             }
+            return activeUserNames
         }
 
-        storeActiveUserNames()
+        val activeUserNames = storeActiveUserNames()
         println(" * * * * * * * * * * * * * * * * * * * * * * * * * * * *")
         println(activeUserNames)
         println(" * * * * * * * * * * * * * * * * * * * * * * * * * * * *")
