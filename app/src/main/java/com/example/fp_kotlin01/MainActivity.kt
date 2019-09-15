@@ -35,21 +35,14 @@ class MainActivity : AppCompatActivity() {
             User(20, "Todd", true)
         )
 
-
         fun storeActiveUserNames(): List<String> {
-            var activeUsers = mutableListOf<User>()
 
-            for (user in users) {
-                if (user.active) {
-                    activeUsers.add(user)
-                }
-            }
-
-            activeUsers.sortBy { user -> user.name }
+            val activeUsers = users.filter { user -> user.active }
+            val sortedUser = activeUsers.sortedBy { user -> user.name }
 
             val activeUserNames = mutableListOf<String>()
 
-            for (user in activeUsers) {
+            for (user in sortedUser) {
                 activeUserNames.add(user.name)
             }
             return activeUserNames
@@ -59,7 +52,5 @@ class MainActivity : AppCompatActivity() {
         println(" * * * * * * * * * * * * * * * * * * * * * * * * * * * *")
         println(activeUserNames)
         println(" * * * * * * * * * * * * * * * * * * * * * * * * * * * *")
-
-
     }
 }
