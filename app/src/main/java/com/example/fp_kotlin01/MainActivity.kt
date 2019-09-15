@@ -36,9 +36,9 @@ class MainActivity : AppCompatActivity() {
         )
 
         fun storeActiveUserNames(users: List<User>): List<String> {
-            return users.filter { user -> user.active }
-                .sortedBy { user -> user.name }
-                .map { user -> user.name }
+            return users.filter { it.active }
+                .sortedBy { it.name }
+                .map { it.name }
         }
 
         println(" * * * * * * * * * * * * * * * * * * * * * * * * * * * *")
